@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head th:replace="/layout :: head">
+    <title th:text="#{index.title.type}"></title>
+</head>
+<body>
+<h3 th:text="#{index.title.type}"></h3>
+<p>
+    <a th:href="@{/types/create}">
+        Add new type
+    </a>
+</p>
+<p>
+    <a th:href="@{/computers}">
+        Computers
+    </a>
+</p>
+<p>
+    <a th:href="@{/types/count}">
+        Count
+    </a>
+</p>
+<div class="notify">
+    <div th:if="${message}">
+        <span th:text="${message}"></span>
+    </div>
+</div>
+
+<table>
+    <thead>
+    <tr>
+        <th>STT</th>
+        <th>Name</th>
+        <th>Update</th>
+        <th>delete</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="t, tStatus : ${types}">
+        <td th:text="${tStatus.count}"></td>
+        <td><a th:href="@{/types/view-type/{id}(id=${t.getId()})}" th:text="${t.getName()}"></a></td>
+        <td><a th:href="@{/types/update/{id}(id=${t.getId()})}">update</a></td>
+        <td><a th:href="@{/types/delete/{id}(id=${t.getId()})}">delete</a></td>
+    </tr>
+    </tbody>
+</table>
+<footer th:replace="/layout :: footer"></footer>
+</body>
+</html>

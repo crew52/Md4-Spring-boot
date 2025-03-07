@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head th:replace="/layout :: head">
+    <title>Count Types</title>
+</head>
+<body>
+<p>
+    <a th:href="@{/types}">
+        Types
+    </a>
+</p>
+<table id="types">
+    <thead>
+    <tr>Id</tr>
+    <tr>Name</tr>
+    <tr>Count</tr>
+    </thead>
+    <tbody>
+    <tr th:each="t : ${typeDTOS}">
+        <td th:text="${t.getId()}"></td>
+        <td th:text="${t.getName()}"></td>
+        <td th:text="${t.getCount()}"></td>
+    </tr>
+    </tbody>
+</table>
+<footer th:replace="/layout :: footer"></footer>
+</body>
+</html>
